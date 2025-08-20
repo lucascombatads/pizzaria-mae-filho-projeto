@@ -71,11 +71,11 @@ export const useCart = () => {
       return '';
     }
 
-    let message = `🍕 *PEDIDO PIZZARIA MÃE & FILHO*\n\n`;
-    message += `👤 *Cliente:* ${customer.name}\n`;
-    message += `📍 *Endereço:* ${customer.address}\n`;
-    message += `💳 *Pagamento:* ${customer.paymentMethod}\n\n`;
-    message += `📋 *PEDIDO:*\n`;
+    let message = `*PEDIDO PIZZARIA MÃE & FILHO*\n\n`;
+    message += `*Cliente:* ${customer.name}\n`;
+    message += `*Endereço:* ${customer.address}\n`;
+    message += `*Pagamento:* ${customer.paymentMethod}\n\n`;
+    message += `*PEDIDO:*\n`;
 
     cartItems.forEach((item, index) => {
       message += `${index + 1}. `;
@@ -103,7 +103,16 @@ export const useCart = () => {
       message += '\n';
     });
 
-    message += `\n💰 *TOTAL: R$ ${getCartTotal().toFixed(2)}*`;
+    // Taxas iguais ao carrinho
+    const deliveryFee = 4;
+    const cardFee = (customer.paymentMethod === "Cartão de Crédito" || customer.paymentMethod === "Cartão de Débito") ? 2 : 0;
+    const finalTotal = getCartTotal() + deliveryFee + cardFee;
+
+    message += `\n*Taxa de entrega: R$ ${deliveryFee.toFixed(2)}*`;
+    if (cardFee > 0) {
+      message += `\n*Taxa adicional (cartão): R$ ${cardFee.toFixed(2)}*`;
+    }
+    message += `\n*TOTAL: R$ ${finalTotal.toFixed(2)}*`;
 
     return encodeURIComponent(message);
   }, [customer, cartItems, getCartTotal]);

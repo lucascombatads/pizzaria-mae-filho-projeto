@@ -2,18 +2,10 @@ import { MenuItem } from '../types';
 
 export const pizzasSalgadas: MenuItem[] = [
   {
-    id: '1', 
-    name: 'Pizza de 45cm | grátis Brotinho de banana e Flexa 2l',
-    prices: { large: 0, medium: 0, small: 0 },
-    ingredients: ['Escolher sabor na observação do carrinho'],
-    image: 'https://github.com/lucascombatads/imagens-hepatoburn/blob/main/Imagem%20do%20WhatsApp%20de%202025-08-17%20%C3%A0(s)%2010.43.51_ea44cb40.jpg?raw=true',
-    category: 'salgada'
-  },
-  {
     id: '2', 
     name: 'Frango c/ catupiry',
     prices: { large: 80, medium: 60, small: 31 },
-    ingredients: ['molho', 'queijo', 'presunto', 'calabresa', 'tomate', 'cebola', 'pimentão', 'milho', 'azeitona', 'orégano'],
+    ingredients: ['molho', 'queijo', 'frango', 'catupiry', 'orégano'],
     image: 'https://github.com/lucascombatads/imagens-hepatoburn/blob/main/frango-catupiry.png?raw=true',
     category: 'salgada'
   },
@@ -77,7 +69,7 @@ export const pizzasSalgadas: MenuItem[] = [
     id: '10',
     name: 'Portuguesa',
     prices: { large: 75, medium: 57, small: 39 },
-    ingredients: ['molho', 'queijo', 'bacon', 'ovos', 'azeitona', 'orégano'],
+    ingredients: ['molho', 'queijo', 'presunto', 'calabresa', 'tomate', 'cebola', 'pimentão', 'milho', 'azeitona', 'orégano'],
     image: 'https://github.com/lucascombatads/imagens-hepatoburn/blob/main/pepperoni.png?raw=truee',
     category: 'salgada'
   },

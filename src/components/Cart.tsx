@@ -45,7 +45,12 @@ export const Cart: React.FC<CartProps> = ({
 
   // Definindo a taxa fixa de entrega
   const deliveryFee = 4;
-  const totalWithDelivery = total + deliveryFee;
+
+  // Taxa adicional para cartão
+  const cardFee = (customer.paymentMethod === "Cartão de Crédito" || customer.paymentMethod === "Cartão de Débito") ? 2 : 0;
+
+  // Total final igual ao WhatsApp
+  const totalWithDelivery = total + deliveryFee + cardFee;
 
   return (
     <>
@@ -197,6 +202,14 @@ export const Cart: React.FC<CartProps> = ({
                 <span>R$ {deliveryFee.toFixed(2)}</span>
               </div>
 
+              {/* Taxa adicional para cartão */}
+              {cardFee > 0 && (
+                <div className="flex items-center justify-between text-sm text-gray-600">
+                  <span>Taxa adicional (cartão):</span>
+                  <span>R$ {cardFee.toFixed(2)}</span>
+                </div>
+              )}
+
               {/* Total */}
               <div className="flex items-center justify-between text-xl font-bold">
                 <span>Total:</span>
@@ -208,7 +221,6 @@ export const Cart: React.FC<CartProps> = ({
                 disabled={!customer.name || !customer.address || !customer.paymentMethod}
                 className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
               >
-                <span>🍕</span>
                 <span>Finalizar Pedido via WhatsApp</span>
               </button>
             </div>
